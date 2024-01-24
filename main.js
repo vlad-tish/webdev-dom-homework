@@ -70,7 +70,8 @@ import { listElement, renderComments } from "./renderComments.js";
 
     loginLinkElement.addEventListener('click', () => {
       listElement.style.display = 'none'
-      renderLogin({ fetchAndRenderComments });
+      renderLogin();
+      fetchAndRenderComments();
       window.scrollTo({
         top:document.querySelector('.form'),
       })

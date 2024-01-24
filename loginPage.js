@@ -2,7 +2,7 @@ import { login, setToken, token } from "./api.js";
 
 const appElement = document.querySelector('.app')
 
-export const renderLogin = ({ fetchAndRenderComments }) => {
+export const renderLogin = () => {
     const loginHTML = `<h1>Страница входа</h1>
     <div class="form">
       <h3 class="form-title">Форма входа</h3>
@@ -38,9 +38,7 @@ export function loginButtonListerner () {
           appElement.style.display = 'none';
           document.querySelector('.link').style.display = 'none';
         };
-      }).then(() => {
-        fetchAndRenderComments();
-      })
+      });
   });
 };
 
