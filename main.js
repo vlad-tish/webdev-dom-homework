@@ -42,7 +42,7 @@ import { listElement, renderComments } from "./renderComments.js";
 
     let comments = [];
 
-    const fetchAndRenderComments = () => { //Обернул в функцию
+    export const fetchAndRenderComments = () => { //Обернул в функцию
       getTodos().then((responseData) => {
           comments = responseData.comments.map((comment) => {
             return { 

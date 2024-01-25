@@ -1,4 +1,5 @@
 import { login, setToken, token } from "./api.js";
+import { fetchAndRenderComments } from "./main.js";
 
 const appElement = document.querySelector('.app')
 
@@ -38,7 +39,9 @@ export function loginButtonListerner () {
           appElement.style.display = 'none';
           document.querySelector('.link').style.display = 'none';
         };
-      });
+      }).then(() => {
+        fetchAndRenderComments();
+      })
   });
 };
 
