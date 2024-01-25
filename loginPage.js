@@ -1,5 +1,6 @@
 import { login, setToken, token } from "./api.js";
 import { fetchAndRenderComments } from "./main.js";
+import { listElement } from "./renderComments.js";
 
 const appElement = document.querySelector('.app')
 
@@ -37,6 +38,7 @@ export function loginButtonListerner () {
       }).then((token) => {
         if(token = true) {
           appElement.style.display = 'none';
+          listElement.style.display = 'block'
           document.querySelector('.link').style.display = 'none';
         };
       }).then(() => {

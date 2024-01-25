@@ -37,7 +37,10 @@ export function postTodo({ name, text }) {
         }else if (response.status === 500) {
           alert('Сервер заболел:( Повторите попытку позднее');
           throw new Error('Ошибка 500');
-        } else {
+        }else if (response.status === 401) {
+          alert('Пожалуйста, авторизуйтесь');
+          throw new Error('Ошибка 401');
+         } else {
           return response.json()};
       });
 };
@@ -50,6 +53,11 @@ export function login({ login, password }) {
       password,
     }),
   }).then((response) => {
+    if(response.status === 400) {
+      alert('Неверные логин или пароль');
+      throw new Error('Ошибка 400');
+    }else {  
       return response.json();
-    });
-  };
+    };
+  });
+};

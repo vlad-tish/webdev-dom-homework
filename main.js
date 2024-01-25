@@ -69,7 +69,7 @@ import { listElement, renderComments } from "./renderComments.js";
     const loginLinkElement = document.querySelector('.login-link');
 
     loginLinkElement.addEventListener('click', () => {
-      listElement.style.display = 'none'
+      listElement.style.display = 'none';
       renderLogin();
       fetchAndRenderComments();
       window.scrollTo({
