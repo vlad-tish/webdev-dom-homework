@@ -38,7 +38,7 @@ export function loginButtonListerner () {
       }).then((token) => {
         if(token = true) {
           appElement.style.display = 'none';
-          listElement.style.display = 'block'
+          listElement.style.display = 'flex'
           document.querySelector('.link').style.display = 'none';
         };
       }).then(() => {
