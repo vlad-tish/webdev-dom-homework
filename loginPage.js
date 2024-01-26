@@ -1,5 +1,5 @@
 import { login, setToken, token } from "./api.js";
-import { fetchAndRenderComments } from "./main.js";
+import { buttonElementLinester, fetchAndRenderComments, inputElement } from "./main.js";
 import { listElement } from "./renderComments.js";
 
 const appElement = document.querySelector('.app')
@@ -34,11 +34,13 @@ export function loginButtonListerner () {
       }).then((responseData) => {
           console.log(responseData);
           setToken(responseData.user.token);
+          inputElement.value = responseData.user.name;
           console.log(token);
       }).then((token) => {
         if(token = true) {
+          inputElement.setAttribute("readonly", "readonly");
           appElement.style.display = 'none';
-          listElement.style.display = 'flex'
+          listElement.style.display = 'flex';
           document.querySelector('.link').style.display = 'none';
         };
       }).then(() => {

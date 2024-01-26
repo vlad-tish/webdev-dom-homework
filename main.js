@@ -6,7 +6,7 @@ import { listElement, renderComments } from "./renderComments.js";
 
 
     const buttonElement = document.querySelector ('.add-form-button');
-    const inputElement = document.querySelector ('.add-form-name');
+    export const inputElement = document.querySelector ('.add-form-name');
     const textareaElement = document.querySelector ('.add-form-text');
 
     const likeEventListerner = () => {
@@ -80,7 +80,7 @@ import { listElement, renderComments } from "./renderComments.js";
         
 
     
-   const buttonElementLinester = () => {
+   export const buttonElementLinester = () => {
         if (inputElement.value === '' && textareaElement.value === '') {
           inputElement.classList.add('error');
           textareaElement.classList.add('error');

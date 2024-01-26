@@ -32,7 +32,7 @@ export function postTodo({ name, text }) {
         }),
       }).then((response) => {
         if(response.status === 400) {
-          alert('Имя и комментарий не менее 3-ех символов');
+          alert('Комментарий не менее 3-ех символов');
           throw new Error('Ошибка 400'); 
         }else if (response.status === 500) {
           alert('Сервер заболел:( Повторите попытку позднее');
