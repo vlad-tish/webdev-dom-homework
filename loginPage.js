@@ -1,12 +1,12 @@
-import { login, setToken, token } from "./api.js";
-import { buttonElementLinester, fetchAndRenderComments, inputElement } from "./main.js";
+import { login, setToken } from "./api.js";
+import { fetchAndRenderComments } from "./main.js";
 import { listElement } from "./renderComments.js";
+import { renderForm } from "./renderForm.js";
 
-const appElement = document.querySelector('.app')
+export const appElement = document.querySelector('.app');
 
 export const renderLogin = () => {
-    const loginHTML = `<h1>Страница входа</h1>
-    <div class="form">
+    const loginHTML = `
       <h3 class="form-title">Форма входа</h3>
       <div class="form-row">
         <input type="text" class="input login-input" placeholder="Логин" />
@@ -22,6 +22,7 @@ export const renderLogin = () => {
     appElement.innerHTML = loginHTML;
 };
 
+
 export function loginButtonListerner () {
   const loginButtonElement = document.querySelector('.login-button');
   const loginInputElement = document.querySelector('.login-input');
@@ -31,21 +32,24 @@ export function loginButtonListerner () {
       login({ 
           login: loginInputElement.value,
           password: passworInputElement.value,
+      }).then((response) => {
+        if(response.status === 400) {
+          alert('Неверные логин или пароль');
+          throw new Error('Ошибка 400');
+        }else {  
+            listElement.style.display = 'flex';
+            appElement.style.display = 'none';
+            renderForm();     
+            return response.json();
+        };
       }).then((responseData) => {
-          console.log(responseData);
+          const inputElement = document.querySelector ('.add-form-name');
           setToken(responseData.user.token);
           inputElement.value = responseData.user.name;
-          console.log(token);
-      }).then((token) => {
-        if(token = true) {
           inputElement.setAttribute("readonly", "readonly");
-          appElement.style.display = 'none';
-          listElement.style.display = 'flex';
-          document.querySelector('.link').style.display = 'none';
-        };
       }).then(() => {
-        fetchAndRenderComments();
-      })
+        return fetchAndRenderComments();
+      });
   });
 };
 

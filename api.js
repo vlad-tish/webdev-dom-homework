@@ -1,4 +1,5 @@
 import { stringHTML } from "./stringHTML.js";
+
 const baseURL = "https://wedev-api.sky.pro/api/v2/vlad-tishkin/comments/";
 const tokenURL = "https://wedev-api.sky.pro/api/user/login";
 
@@ -10,9 +11,6 @@ export const setToken = (newToken) => {
 export function getTodos() {
     return fetch(baseURL, {
           method: "GET",
-          // headers: {
-          //   Authorization: `Bearer ${token}`
-          // },
         }).then((response) => {
           return response.json();
         });
@@ -52,12 +50,5 @@ export function login({ login, password }) {
       login,
       password,
     }),
-  }).then((response) => {
-    if(response.status === 400) {
-      alert('Неверные логин или пароль');
-      throw new Error('Ошибка 400');
-    }else {  
-      return response.json();
-    };
   });
 };

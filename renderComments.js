@@ -1,6 +1,8 @@
+import { commentEventListener } from "./main.js";
+
 export const listElement = document.querySelector ('.comments');
 
-export const renderComments = ({ comments, likeEventListerner, commentEventListener }) => {
+export const renderComments = ({ comments, likeEventListerner }) => {
     const commentsHtml = comments.map((comment, index) => {
       return `<li class="comment" data-index ="${index}">
           <div class="comment-header">
@@ -25,6 +27,6 @@ export const renderComments = ({ comments, likeEventListerner, commentEventListe
         </li>`
     }).join('');
     listElement.innerHTML = commentsHtml;
-    likeEventListerner();
     commentEventListener();
+    likeEventListerner();
 };
