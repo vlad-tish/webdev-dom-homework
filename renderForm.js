@@ -55,10 +55,8 @@ export const buttonElementClick = () => {
         name: inputElement.value,
         text: textareaElement.value,
       }).then(() => {
-        console.log(1);
         return fetchAndRenderComments();
       }).then(() => {
-        console.log(2);
           buttonElement.disabled = false;
           buttonElement.textContent = 'Написать';
           inputElement.value = '';
