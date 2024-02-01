@@ -1,4 +1,4 @@
-import { login, setToken } from "./api.js";
+import { login, setToken, token } from "./api.js";
 import { fetchAndRenderComments } from "./main.js";
 import { listElement } from "./renderComments.js";
 import { renderForm } from "./renderForm.js";
@@ -44,9 +44,10 @@ export function loginButtonListerner () {
         };
       }).then((responseData) => {
           const inputElement = document.querySelector ('.add-form-name');
-          setToken(responseData.user.token);
           inputElement.value = responseData.user.name;
           inputElement.setAttribute("readonly", "readonly");
+          setToken(responseData.user.token);
+          return token;
       }).then(() => {
         return fetchAndRenderComments();
       });
